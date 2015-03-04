@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://localhost:9090/axiswstest/AdditionService" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:9090/axiswstest/AdditionService" xmlns:intf="http://localhost:9090/axiswstest/AdditionService" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+   <wsdl:message name="additionResponse">
+
+      <wsdl:part name="additionReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="additionRequest">
+
+      <wsdl:part name="a" type="xsd:int"/>
+
+      <wsdl:part name="b" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="AdditionService">
+
+      <wsdl:operation name="addition" parameterOrder="a b">
+
+         <wsdl:input message="impl:additionRequest" name="additionRequest"/>
+
+         <wsdl:output message="impl:additionResponse" name="additionResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="AdditionServiceSoapBinding" type="impl:AdditionService">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addition">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="additionRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://webservices.mkrupa.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="additionResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:9090/axiswstest/AdditionService" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="AdditionServiceService">
+
+      <wsdl:port binding="impl:AdditionServiceSoapBinding" name="AdditionService">
+
+         <wsdlsoap:address location="http://localhost:9090/axiswstest/AdditionService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
